@@ -28,7 +28,7 @@ const COPY = {
   },
 };
 
-export default function TurimarLanding() {
+export default function TurimarLanding({ onLogin }) {
   const [profile, setProfile] = useState("turista");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -37,12 +37,12 @@ export default function TurimarLanding() {
   const handleSubmit = (event) => {
     event.preventDefault();
     setSubmitted(true);
+    onLogin?.();
     // TODO: reemplazar por la llamada real a la API de autenticación
   };
 
-  return (
+  return ( 
     <div className="min-h-screen w-full grid grid-cols-1 md:grid-cols-[1.15fr_1fr] bg-sky-50">
-      {/* Panel izquierdo: hero */}
       <section
         className="relative flex flex-col justify-between px-8 py-8 md:px-14 md:py-10 text-white overflow-hidden min-h-[320px]"
         style={{
