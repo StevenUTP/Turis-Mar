@@ -9,7 +9,7 @@ export default function Dashboard({ onPinClick, onLogout }) {
         
   const toggleFilter = (f) =>
     setActiveFilters(prev => prev.includes(f) ? prev.filter(x => x !== f) : [...prev, f]);
-
+    
   return (
     <div className="flex flex-col w-full h-screen bg-slate-100 font-body">
       {/* Top nav */}
