@@ -55,13 +55,13 @@ export default function TurimarLanding({ onLogin }) {
             TM
           </span>
           <span className="text-lg font-bold">
-            Turi-<span className="font-extrabold">Mar y Cielo</span>
+            Turi-<span className="font-extrabold">Mar</span>
           </span>
         </div>
 
         <div className="max-w-md">
           <p className="text-[0.7rem] font-bold tracking-[0.14em] uppercase text-sky-100">
-            Turismos &amp; gastronomía local
+            Turismo &amp; gastronomía local
           </p>
           <h1 className="mt-4 mb-4 text-4xl md:text-5xl font-extrabold leading-[1.12] tracking-tight">
             Descubre los sabores{" "}
