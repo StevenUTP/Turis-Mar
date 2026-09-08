@@ -2,13 +2,30 @@ import { useState } from 'react';
 import { FILTERS, PINS } from '../data/mockData';
 import Stars from '../components/Start';
 import MapBackground from '../components/MapBackground';
+import DetailPanel from '../components/DetailPanel';
+
                
 export default function Dashboard({ onPinClick, onLogout }) {
   const [activeFilters, setActiveFilters] = useState(["Acepta Yape/Plin", "Comida Típica"]);
   const [search, setSearch] = useState("");
+  const [selectedPin, setSelectedPin] = useState(null);
         
   const toggleFilter = (f) =>
     setActiveFilters(prev => prev.includes(f) ? prev.filter(x => x !== f) : [...prev, f]);
+
+  const handlePinClick = (pinId) => {
+    setSelectedPin(pinId);
+    onPinClick?.(pinId);
+  };
+
+  if (selectedPin !== null) {
+    return (
+      <DetailPanel
+        onClose={() => setSelectedPin(null)}
+        onBack={() => setSelectedPin(null)}
+      />
+    );
+  }
     
   return (
     <div className="flex flex-col w-full h-screen bg-slate-100 font-body">
@@ -68,7 +85,7 @@ export default function Dashboard({ onPinClick, onLogout }) {
             <p className="text-xs font-bold text-slate-500 uppercase tracking-widest mb-3">Cerca de ti · {PINS.length} resultados</p>
             <div className="flex flex-col gap-2">
               {PINS.map(pin => (
-                <button key={pin.id} onClick={() => onPinClick(pin.id)} className="flex items-center gap-3 p-3 rounded-2xl border border-slate-200 bg-white hover:bg-sky-50 transition-all text-left">
+                <button key={pin.id} onClick={() => handlePinClick(pin.id)} className="flex items-center gap-3 p-3 rounded-2xl border border-slate-200 bg-white hover:bg-sky-50 transition-all text-left">
                   <div className="flex-1 min-w-0">
                     <p className="text-sm font-semibold text-slate-800 truncate">{pin.name}</p>
                     <div className="flex items-center gap-1 mt-0.5">
@@ -84,7 +101,7 @@ export default function Dashboard({ onPinClick, onLogout }) {
 
         {/* Map Area */}
         <div className="flex-1 relative">
-          <MapBackground onPinClick={onPinClick} />
+          <MapBackground onPinClick={handlePinClick} />
         </div>
       </div>
     </div>
