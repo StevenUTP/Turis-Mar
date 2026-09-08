@@ -2,11 +2,11 @@ import { useState } from 'react';
 import { FILTERS, PINS } from '../data/mockData';
 import Stars from '../components/Start';
 import MapBackground from '../components/MapBackground';
-
+       
 export default function Dashboard({ onPinClick, onLogout }) {
   const [activeFilters, setActiveFilters] = useState(["Acepta Yape/Plin", "Comida Típica"]);
   const [search, setSearch] = useState("");
-
+   
   const toggleFilter = (f) =>
     setActiveFilters(prev => prev.includes(f) ? prev.filter(x => x !== f) : [...prev, f]);
 
